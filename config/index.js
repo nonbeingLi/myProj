@@ -37,6 +37,7 @@ module.exports = {
   },
 
   build: {
+    port: 9000, 
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
@@ -49,7 +50,7 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false,    //生成环境不允许其进行调试
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
