@@ -2,13 +2,9 @@
   <div id="app">
     <v-header :seller= "seller"></v-header>
     <div class="tab">
-
-          <router-link class="item-tab" to="/goods">商品</router-link>
-
-          <router-link class="item-tab" to="/ratings">评论</router-link>
-
-          <router-link class="item-tab" to="/seller">商家</router-link>
-
+      <router-link class="item-tab" to="/goods">商品</router-link>
+      <router-link class="item-tab" to="/ratings">评论</router-link>
+      <router-link class="item-tab" to="/seller">商家</router-link>
     </div>
     <keep-alive>
       <router-view  :seller="seller"/>

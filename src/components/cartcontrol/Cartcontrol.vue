@@ -11,6 +11,9 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    import Bus from '../../common/js/eventBus';
+
 export default {
     props:{
         food:{
@@ -26,7 +29,9 @@ export default {
             }else{
                 this.food.count++;
             }
-            this.$emit('cartAdd',event.target)
+            // this.$emit('cartAdd',event.target)
+            Bus.$emit('cartAdd', event.target);
+
         },
         decreaseCart(){
             if(this.food.count){

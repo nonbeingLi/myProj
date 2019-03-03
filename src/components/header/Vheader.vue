@@ -30,7 +30,7 @@
       <img :src="seller.avatar" width="100%"  alt="">
     </div>
     <transition name="fade">
-    <div v-show="detailShow" class="detail" transition="fade">
+    <div v-show="detailShow" class="detail">
       <div class="detail-wrapper clearfix">
         <div class="detail-main">
           <h1 class="name">{{seller.name}}</h1>

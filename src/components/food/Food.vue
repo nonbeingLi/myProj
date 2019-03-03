@@ -63,6 +63,7 @@
     import split from '../split/Split';
     import ratingselect from '../ratingselect/Ratingselect';
     import {formatDate} from '../../common/js/date'
+    import Bus from '../../common/js/eventBus';
 
     const POSITIVE = 0;
     const NEGATIVE = 1;
@@ -107,7 +108,7 @@
                 if(!event._constructed){
                     return;
                 }
-                this.$emit('cartAdd',event.target);
+                Bus.$emit('cartAdd',event.target);
                 this.$set(this.food,'count',1);  
             },
             needShow(type,text){
@@ -133,6 +134,22 @@
                 })
             }
 
+        },
+        created() {
+            // 获取子组件的selectType的更新
+            Bus.$on('ratingtype.select', selectType => {
+                this.selectType = selectType;
+                this.$nextTick(() => {
+                    this.scroll.refresh();
+                });
+            });
+
+            Bus.$on('content.toggle', onlyContent => {
+                this.onlyContent = onlyContent;
+                this.$nextTick(() => {
+                    this.scroll.refresh();
+                });
+            });
         },
         filters:{
             formatDate1(time){

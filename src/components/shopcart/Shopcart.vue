@@ -180,7 +180,7 @@ export default {
                 }
             }
         },
-        enter(el){
+        enter(el,done){
             let rf=el.offsetHeight;  //主动触发浏览器重绘
             this.$nextTick(()=>{
                 el.style.webketTransform='translate3d(0,0,0)';
@@ -188,6 +188,10 @@ export default {
                 let inner=el.getElementsByClassName('inner-hook')[0];
                 inner.style.webketTransform='translate3d(0,0,0)';
                 inner.style.transform='translate3d(0,0,0)';
+                //当只用 JavaScript 过渡的时候，在 enter 和 leave 中必须使用 done 进行回调。否则，它们将被同步调用，过渡会立即完成。
+                //css3提供了transitionend 告知动画结束
+                el.addEventListener('transitionend',done)
+                //done就是告诉vue动画结束可进入下一个钩子
             })
         },
         afterEnter(el){  //重置ball的状态

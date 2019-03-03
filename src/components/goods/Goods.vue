@@ -47,6 +47,7 @@ import BScroll from 'better-scroll';
 import shopcart from '../shopcart/Shopcart';
 import cartcontrol from '../cartcontrol/Cartcontrol';
 import food from '../food/Food';
+import Bus from '../../common/js/eventBus';
 
 const ERR_OK=0;
 
@@ -70,6 +71,12 @@ export default {
         
       }
     })
+
+    Bus.$on('cartAdd', el => {
+        this.$nextTick(() => {
+            this.$refs.shopcart.drop(el);
+        })
+    });
   },
   data () {
     return {

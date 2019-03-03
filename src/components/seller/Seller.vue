@@ -118,7 +118,7 @@ export default {
         this.scroll.refresh();
       }
     },
-    _initPics(){
+    _initPics(){  //手动设置横向图片列表的宽度 让其撑开
       if(this.seller.pics){  
         let picWidth = 120;
         let margin = 6;
